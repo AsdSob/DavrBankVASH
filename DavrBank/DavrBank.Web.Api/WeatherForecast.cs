@@ -1,6 +1,6 @@
 using System;
 
-namespace DavrBank.Web.Api
+namespace DavrBank.VASHApi
 {
     public class WeatherForecast
     {
