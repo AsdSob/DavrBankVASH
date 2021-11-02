@@ -16,7 +16,8 @@ namespace DavrBank.AuthorizationApi.Helpers
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             // connect to sql server database
-            options.UseSqlServer(Configuration.GetConnectionString("WebApiDatabase"));
+            options.UseSqlServer();
+
         }
 
         public DbSet<User> Users { get; set; }

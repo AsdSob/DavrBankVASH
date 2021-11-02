@@ -30,11 +30,8 @@ namespace DavrBank.AuthorizationApi
         public void ConfigureServices(IServiceCollection services)
         {
             // use sql server db in production and sqlite db in development 
-            if (_env.IsProduction())
-                services.AddDbContext<DataContext>();
-            else
-                services.AddDbContext<DataContext, SqliteDataContext>();
-
+            services.AddDbContext<DataContext>();
+  
             services.AddCors();
             services.AddControllers();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
