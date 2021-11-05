@@ -8,6 +8,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using VASHApi.DataAccess;
 using VASHApi.Helpers;
+using VASHApi.Services;
 
 namespace VASHApi
 {
@@ -33,9 +34,10 @@ namespace VASHApi
             });
 
             // configure DI for application services
-            services.AddScoped<IDataAccessProvider, DataAccessProvider>();
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            //services.AddScoped<IDataAccessProvider, DataAccessProvider>();
+            services.AddScoped<IPageResponseService, PageResponseService>();
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
