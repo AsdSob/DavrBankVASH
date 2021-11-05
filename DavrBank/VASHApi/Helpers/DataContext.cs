@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using VASHApi.Entities;
 
 namespace VASHApi.Helpers
 {
@@ -22,6 +19,15 @@ namespace VASHApi.Helpers
             options.UseSqlServer(Configuration.GetConnectionString("WebApiDatabase"));
         }
 
-        public DbSet<WeatherForecast> Users { get; set; }
+        //public override int SaveChanges()
+        //{
+        //    ChangeTracker.DetectChanges();
+        //    return base.SaveChanges();
+        //}
+
+        public DbSet<Currency> Currencies { get; set; }
+        public DbSet<CurrencyRate> CurrencyRates { get; set; }
+        public DbSet<Citizen> Citizens { get; set; }
+        public DbSet<DocumentType> DocumentTypes { get; set; }
     }
 }

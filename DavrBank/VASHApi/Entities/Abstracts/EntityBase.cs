@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace VASHApi.Entities.Abstracts
 {
     public abstract class EntityBase : IEntity<int>
