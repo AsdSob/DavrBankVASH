@@ -15,6 +15,9 @@ namespace VASHApi.Helpers
             CreateMap<CurrencyRateDto, CurrencyRate>();
 
             CreateMap<Citizen, CitizenDto>();
+            CreateMap<CitizenDto, Citizen>();
+
+            CreateMap<DocumentTypeDto, DocumentType>();
             CreateMap<DocumentType, DocumentTypeDto>();
 
         }

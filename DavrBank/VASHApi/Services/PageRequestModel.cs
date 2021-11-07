@@ -1,7 +1,7 @@
 ﻿
 namespace VASHApi.Services
 {
-    public class SortPageRequest
+    public class PageRequestModel
     {
         /// <summary>
         /// Current page
@@ -19,7 +19,7 @@ namespace VASHApi.Services
         public string sort { get; set; }
     }
 
-    public class SortRequestFilter : SortPageRequest, IFieldFilter
+    public class PageRequestFilter : PageRequestModel, IFieldFilter
     {
         /// <summary>
         /// Filters

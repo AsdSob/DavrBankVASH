@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using VASHApi.DTOs;
 using VASHApi.Entities;
 using VASHApi.Helpers;
@@ -26,13 +27,17 @@ namespace VASHApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAll([FromQuery] PageRequestModel pageRequest)
         {
-            var models = _dbContext.Currencies;
+            var models = _dbContext.Currencies
+                .Skip((pageRequest.page - 1) * pageRequest.pagesize)
+                .Take(pageRequest.pagesize);
+
+            var totalItems = _dbContext.Currencies.CountAsync();
 
             var dtos = _mapper.Map<IList<CurrencyDto>>(models).ToArray();
 
-            var pageResponse = _pageResponseService.GetPageResponse<CurrencyDto>(dtos);
+            var pageResponse = _pageResponseService.GetPageResponse<CurrencyDto>(dtos, totalItems.Result, pageRequest);
 
             return Ok(pageResponse);
         }

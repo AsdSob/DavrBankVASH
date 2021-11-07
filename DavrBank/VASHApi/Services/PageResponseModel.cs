@@ -1,5 +1,5 @@
 ﻿
-namespace VASHApi.Helpers
+namespace VASHApi.Services
 {
     public class PageResponseModel<TDto>
     {
