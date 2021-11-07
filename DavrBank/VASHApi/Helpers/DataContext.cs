@@ -25,6 +25,8 @@ namespace VASHApi.Helpers
         //    return base.SaveChanges();
         //}
 
+
+
         public DbSet<Currency> Currencies { get; set; }
         public DbSet<CurrencyRate> CurrencyRates { get; set; }
         public DbSet<Citizen> Citizens { get; set; }

@@ -1,7 +1,7 @@
 ﻿
 namespace VASHApi.Helpers
 {
-    public class PageResponse<TDto>
+    public class PageResponseModel<TDto>
     {
         /// <summary>
         /// Current page
