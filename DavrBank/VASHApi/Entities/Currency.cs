@@ -8,5 +8,6 @@ namespace VASHApi.Entities
         public string Name { get; set; }
 
         public ICollection<CurrencyRate> CurrencyRates { get; set; }
+        public ICollection<ExchangeTransaction> ExchangeTransactions { get; set; }
     }
 }

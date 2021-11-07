@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using VASHApi.Entities.Abstracts;
 
 namespace VASHApi.Entities
@@ -21,5 +22,7 @@ namespace VASHApi.Entities
 
         public virtual DocumentType DocumentType { get; set; }
         public virtual Citizen Citizen { get; set; }
+        public ICollection<ExchangeTransaction> ExchangeTransactions { get; set; }
+
     }
 }
