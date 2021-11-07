@@ -46,7 +46,7 @@ namespace VASHApi.Controllers
             return Ok(model);
         }
 
-        [HttpPost("{CurrencyDto}")]
+        [HttpPost]
         public virtual async Task<IActionResult> Add([FromBody] CurrencyDto tDto)
         {
             var model = _mapper.Map<Currency>(tDto);
@@ -57,61 +57,27 @@ namespace VASHApi.Controllers
             return Ok();
         }
 
-        [HttpPost]
-        public virtual async Task<IActionResult> AddRange([FromBody] IList<CurrencyDto> tDto)
+        [HttpPut]
+        public virtual async Task<IActionResult> Update([FromBody] CurrencyDto tDto)
         {
-            var model = _mapper.Map<List<Currency>>(tDto);
+            var model = _mapper.Map<Currency>(tDto);
 
-            _dbContext.Currencies.AddRange(model);
+            _dbContext.Currencies.Update(model);
             _dbContext.SaveChanges();
 
             return Ok();
         }
 
-        //[HttpPut]
-        //public virtual async Task<IActionResult> Update([FromBody] CurrencyDto tDto)
-        //{
-        //    var model = _mapper.Map<Currency>(tDto);
+        [HttpDelete]
+        public virtual async Task<IActionResult> Delete([FromBody] CurrencyDto tDto)
+        {
+            var model = _mapper.Map<Currency>(tDto);
 
-        //    _dbContext.Currencies.Update(model);
-        //    _dbContext.SaveChanges();
+            _dbContext.Currencies.Remove(model);
+            _dbContext.SaveChanges();
 
-        //    return Ok();
-        //}
-
-        //[HttpPut]
-        //public virtual async Task<IActionResult> UpdateRange([FromBody] IList<CurrencyDto> tDto)
-        //{
-        //    var model = _mapper.Map<List<Currency>>(tDto);
-
-        //    _dbContext.Currencies.UpdateRange(model);
-        //    _dbContext.SaveChanges();
-
-        //    return Ok();
-        //}
-
-
-        //[HttpDelete]
-        //public virtual async Task<IActionResult> Delete([FromBody] CurrencyDto tDto)
-        //{
-        //    var model = _mapper.Map<Currency>(tDto);
-
-        //    _dbContext.Currencies.Remove(model);
-        //    _dbContext.SaveChanges();
-
-        //    return Ok();
-        //}
-
-        //[HttpDelete]
-        //public virtual async Task<IActionResult> DeleteRange([FromBody] IList<CurrencyDto> tDto)
-        //{
-        //    var model = _mapper.Map<List<Currency>>(tDto);
-
-        //    _dbContext.Currencies.UpdateRange(model); 
-        //    _dbContext.SaveChanges();
-
-        //    return Ok();
-        //}
+            return Ok();
+        }
 
     }
 }
